@@ -1,0 +1,109 @@
+<!-- Page: Mis Reservas (mis-reservas.html) -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mis Reservas — Travel Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Travel Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="mis-reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mi-cuenta.html">Mi cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Destino.html">Destino</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas especiales</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-page" style="background-image: url('https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80');">
+        <div class="container hero-content py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold">Tus próximas aventuras están aquí</h1>
+                    <p class="lead mb-4">Explora tus reservas y descubre destinos de playa que te inspirarán a viajar.</p>
+                    <a href="Destino.html" class="btn btn-primary btn-lg me-2">Buscar destinos</a>
+                    <a href="ofertas.html" class="btn btn-outline-light btn-lg">Ver ofertas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container py-5">
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4">
+                <div class="card destination-card shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" class="card-img-top" alt="Playa tropical" />
+                    <div class="card-body">
+                        <h5 class="card-title">Playa tropical</h5>
+                        <p class="card-text">Aguas cristalinas, palmeras y brisa perfecta para relajarte.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card destination-card shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" class="card-img-top" alt="Atardecer" />
+                    <div class="card-body">
+                        <h5 class="card-title">Atardecer dorado</h5>
+                        <p class="card-text">Vive la experiencia de un atardecer mágico desde la orilla.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card destination-card shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80" class="card-img-top" alt="Cabaña de playa" />
+                    <div class="card-body">
+                        <h5 class="card-title">Escapada íntima</h5>
+                        <p class="card-text">Cabañas frente al mar con planes de descanso y romance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h2 class="h5">Resumen de tus reservas</h2>
+                    <p class="text-muted">Revisa tus viajes confirmados, fechas y detalles en un solo lugar.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><strong>Reserva 001</strong> - Playa tropical - 10 al 17 julio</li>
+                        <li class="mb-3"><strong>Reserva 002</strong> - Escapada romántica - 22 al 25 agosto</li>
+                        <li class="mb-3"><strong>Reserva 003</strong> - Aventura costera - 15 al 22 septiembre</li>
+                    </ul>
+                    <a href="contacto.html" class="btn btn-primary">Modificar reserva</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card banner-gradient p-4 h-100">
+                    <h2 class="h5">Asesor de viajes personal</h2>
+                    <p>Si necesitas ayuda con fechas, transporte o mejoras, podemos apoyarte con atención exclusiva.</p>
+                    <a href="contacto.html" class="btn btn-light">Contactar ahora</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-soft py-4">
+        <div class="container text-center">© 2026 Travel Express</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Panel de Control</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Travel Express — Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mi-cuenta.html">Mi cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mis-reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Destino.html">Destino</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <h1 class="h3 mb-3">Panel de administrador</h1>
+
+        <div id="admin-alert" class="alert alert-danger d-none">Acceso denegado: necesita permisos de administrador.
+        </div>
+
+        <div id="admin-content" class="d-none">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title">Visitas totales</h6>
+                            <div class="display-6 fw-bold" id="visits-total">0</div>
+                            <button id="refresh-visits" class="btn btn-sm btn-outline-primary mt-2">Refrescar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title">Acciones</h6>
+                            <div>
+                                <button id="clear-visits" class="btn btn-sm btn-danger">Resetear contador</button>
+                                <!-- las otras acciones de admin se agregan aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-auto">
+        <div class="container d-flex justify-content-between">
+            <div>&copy; 2024 Travel Spres</div>
+            <div>
+                <a class="text-white me-2" href="https://facebook.com/YourPage" target="_blank"><i
+                        class="fa-brands fa-facebook"></i> Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                document.getElementById('admin-alert').classList.remove('d-none');
+                return;
+            }
+
+            const me = await fetch('/api/me', { headers: { Authorization: 'Bearer ' + token } });
+            if (!me.ok) {
+                localStorage.removeItem('token');
+                document.getElementById('admin-alert').classList.remove('d-none');
+                return;
+            }
+            const user = await me.json();
+            if (user.role !== 'admin') {
+                document.getElementById('admin-alert').classList.remove('d-none');
+                return;
+            }
+
+            // show admin content
+            document.getElementById('admin-content').classList.remove('d-none');
+
+            async function loadVisits() {
+                const res = await fetch('/api/visits', { headers: { Authorization: 'Bearer ' + token } });
+                if (!res.ok) return;
+                const data = await res.json();
+                document.getElementById('visits-total').textContent = data.visits;
+            }
+            await loadVisits();
+
+            document.getElementById('refresh-visits').addEventListener('click', loadVisits);
+
+            // Reset visits (not implemented on server: example only)
+            document.getElementById('clear-visits').addEventListener('click', async () => {
+                // example: calling a future endpoint
+                if (!confirm('¿Desea resetear el contador de visitas?')) return;
+                const res = await fetch('/api/visits/reset', { method: 'POST', headers: { Authorization: 'Bearer ' + token } });
+                if (!res.ok) return alert('Operación no disponible en el servidor.');
+                await loadVisits();
+            });
+        })();
+    </script>
+</body>
+
+</html>

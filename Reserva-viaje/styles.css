@@ -1,0 +1,142 @@
+/* ======== ESTILOS GENERALES ======== */
+body {
+    background-color: #eef4ff;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #243447;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 700;
+}
+
+.hero-page {
+    position: relative;
+    color: white;
+    min-height: 340px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 42, 85, 0.5);
+}
+
+.hero-page .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    color: #0d3b66;
+}
+
+.banner-gradient {
+    background: linear-gradient(135deg, #2d6cdf 0%, #6c99ff 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.banner-gradient p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.destination-card,
+.offer-card,
+.contact-card,
+.gallery-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover,
+.offer-card:hover,
+.contact-card:hover,
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(31, 54, 103, 0.14);
+}
+
+.destination-card img,
+.offer-card img,
+.gallery-card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body h5 {
+    color: #1d3a6b;
+}
+
+.card-body p {
+    color: #546d8b;
+}
+
+.btn-primary {
+    background-color: #1b55ff;
+    border-color: #1b55ff;
+}
+
+.btn-primary:hover {
+    background-color: #0d3cc4;
+    border-color: #0d3cc4;
+}
+
+.navbar {
+    padding: 16px 0;
+}
+
+.navbar-brand {
+    font-size: 1.45rem;
+    color: #1b55ff !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #1b55ff !important;
+}
+
+.contact-card {
+    border-radius: 18px;
+}
+
+.footer-soft {
+    background: linear-gradient(90deg, #1b55ff, #6a8cff);
+    color: white;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .hero-page {
+        min-height: 260px;
+    }
+
+    .destination-card img,
+    .offer-card img,
+    .gallery-card img {
+        height: 180px;
+    }
+}
